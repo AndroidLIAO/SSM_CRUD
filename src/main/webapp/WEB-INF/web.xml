@@ -6,11 +6,14 @@
   <display-name>Archetype Created Web Application</display-name>
 
 <!--  1、启动Spring的容器-->
+
+<!--  向web容器传递初始化Spring容器所需的参数-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
-  
+
+<!--  ContextLoaderListener实现了ServletContextListener接口，其中含有ContextInitialized()方法，用于创建Spring的IoC容器-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -38,18 +41,11 @@
       <param-name>encoding</param-name>
       <param-value>utf-8</param-value>
     </init-param>
-    
     <init-param>
       <param-name>forceRequestEncoding</param-name>
       <param-value>true</param-value>
     </init-param>
-    
-    <init-param>
-      <param-name>forceResponseEncoding</param-name>
-      <param-value>true</param-value>
-    </init-param>
   </filter>
-  
   <filter-mapping>
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
